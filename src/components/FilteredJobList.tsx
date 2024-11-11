@@ -53,7 +53,7 @@ export default function FilteredJobList() {
     }
 
     const handleFilterChange = useCallback((filters: Filter) => {
-        // console.log(filters, 'filters');
+        console.log(filters, 'filters');
         const { skills, type, price } = filters;
         let filteredJobs = jobs.filter((job: any) => {
             if (skills.length > 0) {
@@ -112,7 +112,7 @@ export default function FilteredJobList() {
                         </div>
                     ))}
                     {loading && <div className="text-center"><i className="pi pi-spin pi-spinner text-3xl"></i></div>}
-                    {!loading && jobs.length === 0 && <p className="text-center">No jobs found</p>}
+                    {!loading && filteredJobs.length === 0 && <p className="text-center">No jobs found</p>}
                 </section>
                 <section>
                     <div className="p-6 rounded-3xl bg-white">
