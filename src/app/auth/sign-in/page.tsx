@@ -5,7 +5,7 @@ import HorizonsLocalizedLink from "@/components/ui/HorizonsLocalizedLink";
 
 export default function SignInPage() {
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-screen h-screen flex items-center justify-center p-8">
       <div className="w-[1053px] bg-white grid grid-cols-2 rounded-3xl">
         <div>
           <Image

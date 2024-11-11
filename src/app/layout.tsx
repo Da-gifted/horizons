@@ -3,6 +3,7 @@ import { Nunito, Roboto } from "next/font/google";
 
 import 'primeicons/primeicons.css';
 import "./globals.css";
+import AppProvider from "@/providers/AppProvider";
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -31,7 +32,9 @@ export default function RootLayout({
       >
           <div className="min-h-screen bg-[#EEEEEE] text-black">
             <main>
-              {children}  
+              <AppProvider>
+                {children}
+              </AppProvider>
             </main>
           </div>
       </body>

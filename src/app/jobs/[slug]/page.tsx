@@ -1,10 +1,33 @@
+'use client';
+import { useEffect, useState } from "react";
 import Divider from "@/components/Divider";
 import Tags from "@/components/Tags";
 import Header from "@/components/ui/Header";
 import HorizonsButton from "@/components/ui/HorizonsButton";
 import HorizonsLocalizedLink from "@/components/ui/HorizonsLocalizedLink";
+import axios from "@/utils/axios";
+import { limitString, formatDateTime } from "@/utils/helpers";
+import { useParams } from "next/navigation";
 
 export default function JobDetailPage() {
+  const [job, setJob] = useState<{
+    [key: string]: any | null;
+  }>({});
+  const [user, setUser] = useState(null);
+  const jobId = useParams();
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+    const fetchJob = async (ID: string) => {
+      const job = await axios.get('/jobs/' + ID).then((res) => res.data);
+      setJob(job);
+    }
+    fetchJob(jobId.slug as string);
+  }, [jobId]);
+
   return (
     <div className="flex flex-col">
       <Header />
@@ -15,14 +38,18 @@ export default function JobDetailPage() {
           </HorizonsLocalizedLink>
           <section>
             <div className="pl-16 pr-8">
-              <h1 className="text-3xl font-bold mb-4">Software Engineer</h1>
-              <p className="text-[#00000099]">15 Minutes Ago</p>
+              <h1 className="text-3xl font-bold mb-4">
+                {job?.jobTitle} @ {job?.employer?.name}
+              </h1>
+              <p className="text-[#00000099]">
+                {formatDateTime(job?.datePosted)}
+              </p>
             </div>
             <Divider />
           </section>
           <section>
             <p className="pl-16 pr-8 text-[##00000080] text-lg mb-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione est aperiam deserunt maiores? Eos vel ipsa exercitationem eveniet. Repudiandae ipsam doloribus aspernatur provident in ipsa enim quod accusantium, porro magni, minima rerum esse distinctio vero odio deleniti eaque ut ad voluptatum, maiores nobis quis pariatur sed. Ab beatae accusantium dolorum maiores? Voluptate, mollitia in aliquid ipsum impedit odit, quo accusamus maxime ratione laudantium ad aliquam neque quisquam, nihil eveniet adipisci. Fugit quaerat quis ut, laudantium minus deserunt excepturi cupiditate? Maxime quas id odio officiis, totam saepe nisi ipsum eligendi voluptatum ab illum temporibus quibusdam nulla praesentium qui incidunt soluta error culpa repellendus eaque ratione vel asperiores accusamus? Vitae iste perspiciatis est! Distinctio modi eos deleniti, exercitationem enim adipisci nulla voluptatibus ex natus voluptates expedita quas facere corporis blanditiis est repellendus rem mollitia veritatis impedit, consectetur tempora laboriosam consequuntur. Ullam, porro nostrum. Iure perferendis id voluptate tempora harum eum repellendus quibusdam similique? Illo libero quas sapiente unde. Eaque eius tempore ex, necessitatibus in dolor amet quam facilis, sint sed fugit omnis incidunt inventore, sequi distinctio laudantium nihil voluptate illo doloribus corrupti aliquam? Quas facilis consectetur corporis sit officiis commodi accusamus, adipisci modi ex doloremque dignissimos vitae? Sint quos repellendus eligendi voluptate quae asperiores mollitia animi vitae et molestiae minima reprehenderit exercitationem qui, cum soluta? Ex odio perspiciatis unde voluptas voluptate maiores eveniet delectus? Magni fugiat, maiores consequatur perspiciatis quisquam, numquam modi rerum laudantium, qui velit ab! Vero laudantium laborum ratione aspernatur consequuntur ducimus, dolores atque dolorem quidem, fugiat repellat soluta quasi.
+              {job?.description}
             </p>
             <Divider />
           </section>
@@ -32,10 +59,14 @@ export default function JobDetailPage() {
                 <i className="pi pi-tag text-[#14A800]"></i>
                 <span className="inline-flex items-center">
                   <i className="pi pi-dollar"></i>
-                  <span className="ml-[-3px]">200</span>
+                  <span className="ml-[-3px]">
+                    {job?.budget}
+                  </span>
                 </span>
               </h4>
-              <p className="text-[#00000099]">Fixed Price</p>
+              <p className="text-[#00000099]">
+                {job?.jobPaymentType}
+              </p>
             </div>
             <Divider />
           </section>
@@ -45,14 +76,14 @@ export default function JobDetailPage() {
                 Skills And Expertise
               </h2>
               <div className="mt-4">
-                <Tags tags={['Software Engineer', 'Product Manager', 'Data Scientist', 'UX Designer', 'DevOps Engineer', 'Web Designer', 'Graphic Designer', 'UI Designer', 'Frontend Developer']} />
+                <Tags tags={job.skills || []} />
               </div>
             </div>
           </section>
         </div>
         <div className="p-16">
           <div className="w-[200px] text-center">
-            <HorizonsLocalizedLink href="/auth/sign-in" className="block w-full bg-[#14A800] text-white text-lg py-2 font-medium rounded">
+            <HorizonsLocalizedLink href={!user ? '/auth/sign-in': '#'} className="block w-full bg-[#14A800] text-white text-lg py-2 font-medium rounded">
               Apply Now
             </HorizonsLocalizedLink>
             <HorizonsButton className="mt-8 w-full border border-[#14A800] !text-[#14A800] text-lg font-medium bg-transparent py-2">
@@ -63,20 +94,24 @@ export default function JobDetailPage() {
             <h3 className="text-lg font-bold">
               About The Employer
             </h3>
-            <p className="flex items-center gap-4 text-sm text-[#00000099] my-4">
-              <i className="pi pi-verified text-[#14A800]"></i>
-              <span>Payment method verified</span>
-            </p>
+            {job?.employer?.verificationStatus && (
+              <p className="flex items-center gap-4 text-sm text-[#00000099] my-4">
+                <i className="pi pi-verified text-[#14A800]"></i>
+                <span>Payment method verified</span>
+              </p>
+            )}
             <p className="flex items-center gap-4 text-sm text-[#00000099] mb-4">
               <i className="pi pi-map-marker text-[#14A800] text-xl"></i>
               <span className="flex flex-col">
-                United States
-                <span className="text-xs">GreenVille 3:04 Pm</span>
+                {job?.employer?.location?.country}
+                <span className="text-xs">
+                  {`${job?.employer?.location?.state} ${job?.employer?.location?.address}`}
+                </span>
               </span>
             </p>
             <p className="flex flex-col text-sm text-[#00000099]">
-              <span>86 Jobs Posted</span>
-              <span className="text-xs">75% Hire Rate, 1 Open Job</span>
+              <span>{job?.employer?.totalJobsPosted} Jobs Posted</span>
+              <span className="text-xs">{job?.employer?.hireRatePercent}% Hire Rate, {job?.employer?.totalOpenJobs} Open Job</span>
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function HorizonsButton({
     ...props
 }: HorizonsButtonProps) {
     return (
-        <button className={`bg-[#14A800] text-white rounded px-5 py-2 text-base ${className}`} {...props}>
+        <button className={`relative bg-[#14A800] text-white rounded px-5 py-2 text-base disabled:opacity-50 disabled:cursor-not-allowed ${className}`} {...props}>
             {props.children}
         </button>
     );
