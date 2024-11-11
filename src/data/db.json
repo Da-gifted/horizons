@@ -1,0 +1,225 @@
+{
+  "users": [
+    {
+      "id": "6792",
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "test@gmail.com",
+      "password": "password",
+      "confirmPassword": "password",
+      "country": "SO"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "jobTitle": "Remote Customer Support Specialist",
+      "description": "We are seeking a Remote Customer Support Specialist who can assist customers via email and chat. This role is ideal for someone who is empathetic and patient, with experience in customer service. Your responsibilities will include responding to customer inquiries, providing troubleshooting assistance, and guiding customers through our platform. The ideal candidate has a strong understanding of accessible communication tools and can effectively communicate with individuals with varying levels of technical ability. Training is provided to ensure familiarity with the tools required for effective and inclusive communication. Our team values diversity, inclusivity, and adaptability, and we welcome applications from people of all backgrounds and abilities.",
+      "budget": 3000,
+      "skills": ["Communication", "Problem-Solving", "Customer Service", "Basic Computer Skills"],
+      "datePosted": "2024-11-09T10:00:00",
+      "jobPaymentType": "Hourly Rate",
+      "employer": {
+        "name": "Accessible Solutions Inc.",
+        "location": {
+          "country": "United States",
+          "state": "California",
+          "address": "123 Inclusion Ave."
+        },
+        "verificationStatus": true,
+        "totalJobsPosted": 25,
+        "totalOpenJobs": 3,
+        "hireRatePercent": 95
+      }
+    },
+    {
+      "id": "2",
+      "jobTitle": "Data Entry Specialist",
+      "description": "Our company is looking for a Data Entry Specialist to input data accurately and efficiently from a remote location. This position requires attention to detail, familiarity with data entry tools such as Excel, and the ability to work independently. Ideal candidates are comfortable with repetitive tasks, can handle large amounts of data, and are adept at identifying discrepancies. Accessibility tools are provided to support individuals with physical disabilities. We aim to create an inclusive work environment and provide the necessary equipment for ergonomic home workspaces. Experience in data entry is preferred but not mandatory.",
+      "budget": 1500,
+      "skills": ["Data Entry", "Attention to Detail", "Microsoft Excel", "Organizational Skills"],
+      "datePosted": "2024-11-08T14:00:00",
+      "jobPaymentType": "Fixed Price",
+      "employer": {
+        "name": "DataWorks Solutions",
+        "location": {
+          "country": "Canada",
+          "state": "Ontario",
+          "address": "456 Digital Lane"
+        },
+        "verificationStatus": true,
+        "totalJobsPosted": 10,
+        "totalOpenJobs": 2,
+        "hireRatePercent": 88
+      }
+    },
+    {
+      "id": "3",
+      "jobTitle": "Accessibility Consultant",
+      "description": "Seeking an Accessibility Consultant to help improve website accessibility and usability for individuals with disabilities. Responsibilities include conducting accessibility assessments, identifying areas of improvement, and implementing accessibility best practices, including compliance with WCAG guidelines. The role requires knowledge of screen readers and other assistive technologies. Candidates should be able to work collaboratively with our development team to ensure that the website and its features are inclusive and accessible to everyone. This position offers flexible working hours, and candidates will work closely with our in-house accessibility team.",
+      "budget": 4500,
+      "skills": ["Accessibility Testing", "WCAG Compliance", "Screen Readers", "User Testing"],
+      "datePosted": "2024-11-07T13:00:00",
+      "jobPaymentType": "Hourly Rate",
+      "employer": {
+        "name": "Inclusive Web Co.",
+        "location": {
+          "country": "United Kingdom",
+          "state": "London",
+          "address": "789 Accessibility Dr."
+        },
+        "verificationStatus": true,
+        "totalJobsPosted": 15,
+        "totalOpenJobs": 4,
+        "hireRatePercent": 92
+      }
+    },
+    {
+      "id": "4",
+      "jobTitle": "Virtual Administrative Assistant",
+      "description": "We're looking for an organized Virtual Administrative Assistant to support our team with scheduling, email management, and document preparation. This role is ideal for someone who is detail-oriented, proficient in MS Office, and has excellent communication skills. As this is a remote role, candidates need to be comfortable using online communication tools such as Zoom and Slack. We provide accessibility tools to ensure that all team members can work comfortably. Previous experience in an administrative role is preferred but not required, as we offer training to the right candidate.",
+      "budget": 2500,
+      "skills": ["Microsoft Office", "Time Management", "Organizational Skills", "Communication"],
+      "datePosted": "2024-11-06T16:00:00",
+      "jobPaymentType": "Hourly Rate",
+      "employer": {
+        "name": "Virtual Solutions LLC",
+        "location": {
+          "country": "Australia",
+          "state": "New South Wales",
+          "address": "101 Admin St."
+        },
+        "verificationStatus": false,
+        "totalJobsPosted": 8,
+        "totalOpenJobs": 1,
+        "hireRatePercent": 85
+      }
+    },
+    {
+      "id": "5",
+      "jobTitle": "Social Media Content Creator",
+      "description": "Seeking a Social Media Content Creator to develop engaging content across various platforms. Responsibilities include creating posts, videos, and graphics that reflect our brand values of inclusivity and accessibility. The ideal candidate has experience in social media management, graphic design, and content writing. Familiarity with accessibility features on social media, such as alt text and closed captioning, is essential. This role is flexible, and we welcome applications from individuals with disabilities who can bring unique perspectives to our social media strategy.",
+      "budget": 3200,
+      "skills": ["Content Creation", "Social Media Management", "Graphic Design", "Creativity"],
+      "datePosted": "2024-11-05T09:30:00",
+      "jobPaymentType": "Fixed Price",
+      "employer": {
+        "name": "Creative Waves",
+        "location": {
+          "country": "India",
+          "state": "Maharashtra",
+          "address": "555 Social St."
+        },
+        "verificationStatus": true,
+        "totalJobsPosted": 20,
+        "totalOpenJobs": 5,
+        "hireRatePercent": 91
+      }
+    },
+    {
+      "id": "6",
+      "jobTitle": "Remote Technical Support Specialist",
+      "description": "Looking for a Technical Support Specialist to assist clients with troubleshooting software and hardware issues remotely. This position requires patience and technical expertise to help users of various skill levels. Previous experience in technical support or IT helpdesk roles is beneficial. This role is suitable for remote work, with flexible hours to accommodate different time zones. Candidates will receive training on our accessibility tools to assist users with disabilities, ensuring an inclusive support experience.",
+      "budget": 3500,
+      "skills": ["Technical Support", "Troubleshooting", "Communication", "Problem Solving"],
+      "datePosted": "2024-11-04T11:15:00",
+      "jobPaymentType": "Hourly Rate",
+      "employer": {
+        "name": "Tech Aid",
+        "location": {
+          "country": "United States",
+          "state": "Texas",
+          "address": "999 Tech Dr."
+        },
+        "verificationStatus": true,
+        "totalJobsPosted": 30,
+        "totalOpenJobs": 6,
+        "hireRatePercent": 89
+      }
+    },
+    {
+      "id": "7",
+      "jobTitle": "Content Writer",
+      "description": "We are hiring a Content Writer to develop articles, blogs, and social media content focused on accessibility and inclusivity. This role requires excellent writing skills and the ability to research complex topics related to disability rights and accessibility. Candidates should be familiar with SEO practices and have an understanding of inclusive language. This is a fully remote position, and we encourage applications from people with disabilities who can share unique insights and experiences to inform their writing.",
+      "budget": 1800,
+      "skills": ["Writing", "SEO", "Research", "Content Strategy"],
+      "datePosted": "2024-11-03T12:30:00",
+      "jobPaymentType": "Fixed Price",
+      "employer": {
+        "name": "WriteRight Media",
+        "location": {
+          "country": "New Zealand",
+          "state": "Auckland",
+          "address": "888 Content Ln."
+        },
+        "verificationStatus": false,
+        "totalJobsPosted": 5,
+        "totalOpenJobs": 2,
+        "hireRatePercent": 76
+      }
+    },
+    {
+        "id": "8",
+        "jobTitle": "Transcriptionist",
+        "description": "Looking for an experienced Transcriptionist to transcribe audio files for various projects. The ideal candidate is detail-oriented and can transcribe quickly and accurately. Familiarity with transcription software is a plus. This role is remote, allowing for flexible hours, making it an excellent fit for individuals who prefer to work at their own pace. We encourage applications from individuals with physical disabilities and offer training on accessibility tools as needed. Transcriptionists will be responsible for listening to audio recordings and creating accurate, well-formatted written documents. This role requires high attention to detail, time management, and the ability to meet deadlines without compromising accuracy.",
+        "budget": 2000,
+        "skills": ["Transcription", "Typing", "Attention to Detail", "Time Management"],
+        "datePosted": "2024-11-02T08:30:00",
+        "jobPaymentType": "Fixed Price",
+        "employer": {
+            "name": "AudioTranscribe Co.",
+            "location": {
+                "country": "Brazil",
+                "state": "São Paulo",
+                "address": "999 Audio St."
+            },
+            "verificationStatus": true,
+            "totalJobsPosted": 18,
+            "totalOpenJobs": 4,
+            "hireRatePercent": 85
+        }
+    },
+    {
+        "id": "9",
+        "jobTitle": "Remote Project Manager",
+        "description": "We are hiring a Project Manager to oversee multiple projects remotely. The role requires excellent organizational skills, the ability to manage deadlines, and proficiency with project management software, such as Asana or Trello. You will coordinate tasks with teams, track project progress, and ensure timely delivery. This position offers flexible working hours and accommodates individuals with disabilities. We value inclusion and provide necessary accommodations to help you succeed in a collaborative and accessible work environment. Candidates should have experience in project planning, task coordination, and a strong understanding of accessibility considerations.",
+        "budget": 6000,
+        "skills": ["Project Management", "Organization", "Communication", "Task Coordination"],
+        "datePosted": "2024-11-01T16:45:00",
+        "jobPaymentType": "Hourly Rate",
+        "employer": {
+            "name": "Project Solutions Ltd.",
+            "location": {
+                "country": "Germany",
+                "state": "Berlin",
+                "address": "333 Project Dr."
+            },
+            "verificationStatus": true,
+            "totalJobsPosted": 12,
+            "totalOpenJobs": 3,
+            "hireRatePercent": 90
+        }
+    },
+    {
+        "id": "10",
+        "jobTitle": "Remote Sales Associate",
+        "description": "We are seeking a Remote Sales Associate to handle inbound sales calls, respond to customer inquiries, and promote products. The ideal candidate will have a background in sales, excellent communication skills, and an understanding of remote communication tools. This position allows for flexible hours and is open to individuals with physical disabilities. Our team is dedicated to making this role accessible, providing tools and support to help you succeed. Sales Associates will be responsible for maintaining customer relationships, closing sales, and achieving set sales targets. Experience with CRM software is a plus.",
+        "budget": 2800,
+        "skills": ["Sales", "Customer Relations", "Remote Communication", "CRM"],
+        "datePosted": "2024-10-31T17:00:00",
+        "jobPaymentType": "Fixed Price",
+        "employer": {
+            "name": "SalesConnect Ltd.",
+            "location": {
+                "country": "Philippines",
+                "state": "Metro Manila",
+                "address": "444 Sales Dr."
+            },
+            "verificationStatus": true,
+            "totalJobsPosted": 20,
+            "totalOpenJobs": 5,
+            "hireRatePercent": 87
+        }
+    }
+    ]
+}
