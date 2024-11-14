@@ -165,7 +165,6 @@ export default function SignUpForm() {
                 <Label>Country</Label>
                 <Select
                     name="country"
-                    defaultValue={formData.country}
                     className="data-[hover]:shadow data-[focus]:bg-blue-500 border border-[#034E334D] font-medium text-[15.33px] rounded p-3 w-full focus:ring-[#034E33]"
                     value={formData.country}
                     onChange={handleSelectChange}

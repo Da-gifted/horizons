@@ -40,10 +40,8 @@ export default function FilteredJobList() {
     React.useEffect(() => {
         if (searchTerm) {
             setFilteredJobs(jobs.filter((job: any) => job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())));
-            console.log('search term');
         } else {
             setFilteredJobs(jobs);
-            console.log('no search term');
         }
     }, [searchTerm, jobs]);
 
@@ -53,22 +51,22 @@ export default function FilteredJobList() {
     }
 
     const handleFilterChange = useCallback((filters: Filter) => {
-        console.log(filters, 'filters');
         const { skills, type, price } = filters;
-        let filteredJobs = jobs.filter((job: any) => {
+
+        const filteredSkillJobs = jobs.filter((job: any) => {
             if (skills.length > 0) {
                 return skills.every((skill) => job.skills.includes(skill));
             }
             return true;
         });
-        if (type !== 'all') {
-            filteredJobs = filteredJobs.filter((job: any) => job.type === type);
-        }
-        if (price.min && price.max) {
-            filteredJobs = filteredJobs.filter((job: any) => job.budget >= price.min && job.budget <= price.max);
-        }
-        setFilteredJobs(filteredJobs);
 
+        const filteredTypeJobs = type !== 'all' ? jobs.filter((job: any) => job.jobPaymentType.toLowerCase().includes(type.toLowerCase())) : jobs;
+
+        const filteredPriceJobs = price.min && price.max ? jobs.filter((job: any) => job.budget >= price.min && job.budget <= price.max) : jobs;
+
+        const filteredJobs = filteredSkillJobs.filter((job: any) => filteredTypeJobs.includes(job) && filteredPriceJobs.includes(job));
+
+        setFilteredJobs(filteredJobs);
     }, [jobs]);
 
     return (
@@ -107,7 +105,7 @@ export default function FilteredJobList() {
                                 <HorizonsLocalizedLink href={`/jobs/${job.id}`} className="text-[#14A800]">Read More</HorizonsLocalizedLink>
                             </p>
                             <div className="mt-4">
-                                <Tags tags={jobs?.skills || []} />
+                                <Tags tags={job?.skills || []} />
                             </div>
                         </div>
                     ))}
