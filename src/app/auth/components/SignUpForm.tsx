@@ -119,57 +119,64 @@ export default function SignUpForm() {
         }
     }
     return (
-        <form onSubmit={handleSubmit} className="">
-            {error && <div className="text-red-500 text-sm text-center my-4">{error}</div>}
+        <form onSubmit={handleSubmit} id="form" aria-describedby="formHelp">
+            {error && <span role="alert" id="formHelp" aria-live="polite" className="text-red-500 text-sm text-center my-4">{error}</span>}
             <div className="grid grid-cols-2 items-center gap-4">
                 <HorizonsInput
-                    labelName="First Name"
+                    labelName="Fill in your first name:"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
+                    aria-required="true"
                 />
                 <HorizonsInput
-                    labelName="Last Name"
+                    labelName="Fill in your last name:"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
+                    aria-required="true"
                 />
             </div>
             <HorizonsInput
-                labelName="Email"
+                labelName="Fill in your email:"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 type="email"
                 required
+                aria-required="true"
             />
             <HorizonsInput
-                labelName="Password"
+                labelName="Enter your password:"
                 name="password"
                 type="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 required
+                aria-required="true"
             />
             <HorizonsInput
-                labelName="Confirm Password"
+                labelName="Confirm your password:"
                 name="confirmPassword"
                 type="password"
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
                 required
+                aria-required="true"
             />
             <Field>
-                <Label>Country</Label>
+                <Label>
+                    Choose your country:
+                </Label>
                 <Select
                     name="country"
-                    defaultValue={formData.country}
                     className="data-[hover]:shadow data-[focus]:bg-blue-500 border border-[#034E334D] font-medium text-[15.33px] rounded p-3 w-full focus:ring-[#034E33]"
                     value={formData.country}
                     onChange={handleSelectChange}
                     required
+                    aria-required="true"
                 >
                     <option value="">Select Country</option>
                     {countries.map((country, index) => (
@@ -183,7 +190,7 @@ export default function SignUpForm() {
                     className='w-1/2 !mx-auto p-3 mt-4'
                     disabled={error.length > 0 || loading}
                 >
-                    Sign Up
+                    Create Account
                     {loading && <i className="pi pi-spin pi-spinner absolute top-1/3 right-3"></i>}
                 </HorizonsButton>
             </div>

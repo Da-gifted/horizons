@@ -6,7 +6,7 @@ import Header from "@/components/ui/Header";
 import HorizonsButton from "@/components/ui/HorizonsButton";
 import HorizonsLocalizedLink from "@/components/ui/HorizonsLocalizedLink";
 import axios from "@/utils/axios";
-import { limitString, formatDateTime } from "@/utils/helpers";
+import { formatDateTime } from "@/utils/helpers";
 import { useParams } from "next/navigation";
 
 export default function JobDetailPage() {
@@ -34,6 +34,7 @@ export default function JobDetailPage() {
       <main className="flex-1 grid grid-cols-[2fr_1fr] gap-8">
         <div className="border-r border-[#D9D9D980] mb-8">
           <HorizonsLocalizedLink href="/" className="block text-black text-3xl ml-8 mt-6 mb-4">
+            <span className="sr-only">navigate to previous</span>
             <i className="pi pi-angle-left"></i>
           </HorizonsLocalizedLink>
           <section>
@@ -41,9 +42,9 @@ export default function JobDetailPage() {
               <h1 className="text-3xl font-bold mb-4">
                 {job?.jobTitle} @ {job?.employer?.name}
               </h1>
-              <p className="text-[#00000099]">
+              <h2 className="text-[#00000099]">
                 {formatDateTime(job?.datePosted)}
-              </p>
+              </h2>
             </div>
             <Divider />
           </section>
@@ -55,7 +56,7 @@ export default function JobDetailPage() {
           </section>
           <section>
             <div className="pl-16 pr-8 my-4">
-              <h4 className="flex items-center gap-2 text-xl font-bold">
+              <h3 className="flex items-center gap-2 text-xl font-bold">
                 <i className="pi pi-tag text-[#14A800]"></i>
                 <span className="inline-flex items-center">
                   <i className="pi pi-dollar"></i>
@@ -63,7 +64,7 @@ export default function JobDetailPage() {
                     {job?.budget}
                   </span>
                 </span>
-              </h4>
+              </h3>
               <p className="text-[#00000099]">
                 {job?.jobPaymentType}
               </p>
@@ -72,10 +73,11 @@ export default function JobDetailPage() {
           </section>
           <section>
             <div className="pl-16 pr-8 my-4">
-              <h2 className="text-xl font-bold">
+              <h3 className="text-xl font-bold">
                 Skills And Expertise
-              </h2>
+              </h3>
               <div className="mt-4">
+                <p className="sr-only">Required Skills</p>
                 <Tags tags={job.skills || []} />
               </div>
             </div>

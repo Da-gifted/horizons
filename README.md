@@ -5,6 +5,9 @@ Horizons is a comprehensive job platform designed to connect talented individual
 ## Tools
 
 Node 18.18.0
+VsCode
+Git and GitHub
+[NVA Screen Reader tool](https://www.nvaccess.org/download/)
 
 ## Getting Started
 

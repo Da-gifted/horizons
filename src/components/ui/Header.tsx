@@ -21,11 +21,6 @@ export default function Header() {
         
     }, []);
 
-    // const handelJobSearch = (searchTerm: string) => {
-    //     console.log(searchTerm, 'searchTerm');
-    //     onSearchJobs(searchTerm);
-    // };
-
     const handelJobSearch = useCallback((searchTerm: string) => {
         if (pathname !== '/') {
             onSearchJobs(searchTerm);
@@ -37,7 +32,7 @@ export default function Header() {
             <div className="container mx-auto py-4 flex justify-between items-center">
                 <HorizonsLogo />
                 <div className="ml-auto flex justify-between items-center gap-4">
-                    <SearchBar items={sysSearchOptions} onSelect={handelJobSearch} />
+                    {pathname !== '/' && (                    <SearchBar items={sysSearchOptions} onSelect={handelJobSearch} />)}
                     {user ? (
                         <>
                             <Image

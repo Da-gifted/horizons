@@ -60,23 +60,25 @@ export default function SignInForm() {
         }
     }
     return (
-        <form onSubmit={handleSignIn}>
-            {error && <div className="text-red-500 text-sm text-center my-4">{error}</div>}
+        <form onSubmit={handleSignIn} id="form" aria-describedby="formHelp">
+            {error && <span role="alert" id="formHelp" aria-live="polite" className="text-red-500 text-sm text-center my-4">{error}</span>}
             <HorizonsInput
-                labelName="Email"
+                labelName="Fill in your email:"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
+                aria-required="true"
             />
             <HorizonsInput
-                labelName="Password"
+                labelName="Fill in your password:"
                 name="password"
                 type="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 required
+                aria-required="true"
             />
             <HorizonsButton
                 type="submit"

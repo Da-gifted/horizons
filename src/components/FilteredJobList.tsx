@@ -40,10 +40,8 @@ export default function FilteredJobList() {
     React.useEffect(() => {
         if (searchTerm) {
             setFilteredJobs(jobs.filter((job: any) => job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())));
-            console.log('search term');
         } else {
             setFilteredJobs(jobs);
-            console.log('no search term');
         }
     }, [searchTerm, jobs]);
 
@@ -53,22 +51,22 @@ export default function FilteredJobList() {
     }
 
     const handleFilterChange = useCallback((filters: Filter) => {
-        console.log(filters, 'filters');
         const { skills, type, price } = filters;
-        let filteredJobs = jobs.filter((job: any) => {
+
+        const filteredSkillJobs = jobs.filter((job: any) => {
             if (skills.length > 0) {
                 return skills.every((skill) => job.skills.includes(skill));
             }
             return true;
         });
-        if (type !== 'all') {
-            filteredJobs = filteredJobs.filter((job: any) => job.type === type);
-        }
-        if (price.min && price.max) {
-            filteredJobs = filteredJobs.filter((job: any) => job.budget >= price.min && job.budget <= price.max);
-        }
-        setFilteredJobs(filteredJobs);
 
+        const filteredTypeJobs = type !== 'all' ? jobs.filter((job: any) => job.jobPaymentType.toLowerCase().includes(type.toLowerCase())) : jobs;
+
+        const filteredPriceJobs = price.min && price.max ? jobs.filter((job: any) => job.budget >= price.min && job.budget <= price.max) : jobs;
+
+        const filteredJobs = filteredSkillJobs.filter((job: any) => filteredTypeJobs.includes(job) && filteredPriceJobs.includes(job));
+
+        setFilteredJobs(filteredJobs);
     }, [jobs]);
 
     return (
@@ -103,20 +101,27 @@ export default function FilteredJobList() {
                                 {job.jobTitle}
                             </h2>
                             <p>
-                                {limitString(job.description, 200)}
+                                <span className="sr-only">
+                                    Job Description:
+                                    {job.description}
+                                </span>
+                                <span className="not-sr-only">
+                                    {limitString(job.description, 200)}
+                                </span>
                                 <HorizonsLocalizedLink href={`/jobs/${job.id}`} className="text-[#14A800]">Read More</HorizonsLocalizedLink>
                             </p>
                             <div className="mt-4">
-                                <Tags tags={jobs?.skills || []} />
+                                <p className="sr-only">Required Skills</p>
+                                <Tags tags={job?.skills || []} />
                             </div>
                         </div>
                     ))}
-                    {loading && <div className="text-center"><i className="pi pi-spin pi-spinner text-3xl"></i></div>}
-                    {!loading && filteredJobs.length === 0 && <p className="text-center">No jobs found</p>}
+                    {loading && <span role="alert" aria-label="Loading Jobs, Please wait..." aria-live="polite" className="text-center"><i className="pi pi-spin pi-spinner text-3xl"></i></span>}
+                    {!loading && filteredJobs.length === 0 && <span className="text-center" role="alert" aria-live="polite">No jobs found</span>}
                 </section>
                 <section>
                     <div className="p-6 rounded-3xl bg-white">
-                        <h2 className="text-2xl font-bold mb-4">Filter</h2>
+                        <h2 className="text-2xl font-bold mb-4">Filter Job Listing</h2>
                         <JobFilters onFilterChange={handleFilterChange} /> 
                     </div>
                 </section>
