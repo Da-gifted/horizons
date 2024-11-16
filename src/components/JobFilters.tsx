@@ -102,13 +102,13 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
                     {selectedType === 'hourly' ? 'Hourly Rate' : 'Fixed Price'}
                 </h3>
                 <HorizonsPriceInput
-                    labelName="Min"
+                    labelName="Minimum Rate"
                     name="min"
                     value={filterPrice.min}
                     onChange={handlePriceChange}
                 />
                 <HorizonsPriceInput
-                    labelName="Max"
+                    labelName="Maximum Rate"
                     name="max"
                     value={filterPrice.max}
                     onChange={handlePriceChange}
@@ -124,6 +124,7 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
                 <div className="mt-8">
                         {selectedSkills.map((skill, index) => (<span key={index} className="flex items-center">
                             <HorizonsButton className="!text-red-500 bg-transparent !p-1"
+                            aria-description={`Remove skill ${skill} from selected skills`}
                             onClick={(e) => removeSelectedSkill(e, skill)}>
                                 <i className="pi pi-times"></i>
                             </HorizonsButton>

@@ -5,9 +5,9 @@ interface HorizonsLocalizedLinkProps extends LinkProps {
     className?: string;
 }
 
-export default function HorizonsLocalizedLink({...props} : HorizonsLocalizedLinkProps) {
+export default function HorizonsLocalizedLink({className="", ...props} : HorizonsLocalizedLinkProps) {
     return (
-        <Link className={`text-green-500 underline ${props.className ? props.className : ''}`} {...props}>
+        <Link className={`text-green-500 inline-block underline ${className}`} {...props}>
             {props.children}
         </Link>
     );

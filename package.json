@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "server": "json-server --watch src/data/db.json --port 5000",
     "build": "next build",
-    "start": "next start",
+    "starting": "next start",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
     "lint": "next lint"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^9.1.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
     "json-server": "^1.0.0-beta.3",
