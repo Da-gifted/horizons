@@ -3,9 +3,9 @@ import HorizonsLocalizedLink from "./ui/HorizonsLocalizedLink";
 
 export default function HorizonsLogo() {
     return (
-        <HorizonsLocalizedLink href="/" className="flex items-center">
+        <HorizonsLocalizedLink href="/">
             <Image
-                src="/images/logo-dark.png"
+                src="/images/logo.png"
                 alt="Horizons Logo"
                 height={43}
                 width={80}

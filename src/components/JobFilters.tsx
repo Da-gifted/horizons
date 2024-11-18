@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback } from "react";
+import React from "react";
 import HorizonsPriceInput from "./HorizonsPriceInput";
 import SearchBar from "./SearchBar";
 import HorizonsCheckBox from "./ui/HorizonCheckBox";
@@ -19,14 +19,30 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
     const [selectedType, setSelectedType] = React.useState<string>('all');
     const [filterPrice, setFilterPrice] = React.useState<{ min: number | string, max: number | string }>({ min: '', max: '' });
 
-    const handleSkillSelection = useCallback((skill: string) => {
+    const softSkills = [
+        'Communication',
+        'Problem-Solving',
+        'Customer Service',
+        'Time Management', 'Social Media Management', 'Content Creation', 'Technical Support',
+        'Teamwork', 'Troubleshooting', 'Leadership', 'Creativity', 'Interpersonal Skills', 'Critical Thinking',
+        'Basic Computer Skills',
+        'Attention to Detail',
+        'Adaptability',
+        'Self-Motivation',
+        'Data Entry', 'Writing', 'Research', 'Public Speaking', 'Sales', 'Marketing', 'Project Management', 'Typing',
+        'Microsoft Excel', 'Microsoft Word', 'Microsoft PowerPoint', 'Microsoft Office',
+        'Organizational Skills',
+    ];
+
+    const handleSkillSelection = (skill: string) => {
         if (!selectedSkills.includes(skill)) {
             setSelectedSkills([...selectedSkills, skill]);
         } 
-    }, [selectedSkills]);
+    };
 
-    const removeSelectedSkill = (skill: string) => {
+    const removeSelectedSkill = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, skill: string) => {
         setSelectedSkills(selectedSkills.filter((s) => s !== skill));
+        event.stopPropagation();
     }
 
     const handleCheckboxChange = (e: boolean, type: string) => {
@@ -34,7 +50,13 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
     }
 
     const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFilterPrice({ ...filterPrice, [e.target.name]: Number(e.target.value) });
+        const number = Number(e.target.value);
+        const isNumber = number === 0 || number ? 'number' : 'string';
+
+        setFilterPrice({
+            ...filterPrice,
+            [e.target.name]: isNumber === 'number' ? number : ''
+        });
     }
 
     React.useEffect(() => {
@@ -43,7 +65,12 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
             type: selectedType,
             price: filterPrice
         });
-    }, [selectedSkills, selectedType, filterPrice, onFilterChange]);
+    }, [
+        selectedSkills,
+        selectedType,
+        filterPrice,
+        onFilterChange
+    ]);
 
     return (
         <>
@@ -75,15 +102,13 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
                     {selectedType === 'hourly' ? 'Hourly Rate' : 'Fixed Price'}
                 </h3>
                 <HorizonsPriceInput
-                    labelName="Min"
-                    type="number"
+                    labelName="Minimum Rate"
                     name="min"
                     value={filterPrice.min}
                     onChange={handlePriceChange}
                 />
                 <HorizonsPriceInput
-                    labelName="Max"
-                    type="number"
+                    labelName="Maximum Rate"
                     name="max"
                     value={filterPrice.max}
                     onChange={handlePriceChange}
@@ -95,16 +120,12 @@ export default function JobFilters({ onFilterChange }: JobFiltersProps) {
                     weight="w-full"
                     hint="skills"
                     onSelect={handleSkillSelection}
-                    items={[
-                    "Web Design", "Web Development", "Mobile Development", "UI/UX Design", "Graphic Design",
-                    "Data Science", "Machine Learning", "Artificial Intelligence", "Digital Marketing",
-                    "Content Writing", "Copywriting", "SEO", "SEM", "SMM", "Email Marketing",
-                    "Affiliate Marketing", "Sales"
-                ]} />
+                    items={softSkills}/>
                 <div className="mt-8">
                         {selectedSkills.map((skill, index) => (<span key={index} className="flex items-center">
                             <HorizonsButton className="!text-red-500 bg-transparent !p-1"
-                            onClick={() => removeSelectedSkill(skill)}>
+                            aria-description={`Remove skill ${skill} from selected skills`}
+                            onClick={(e) => removeSelectedSkill(e, skill)}>
                                 <i className="pi pi-times"></i>
                             </HorizonsButton>
                             <HorizonsCheckBox checked label={skill} className="mb-1 ml-1" />

@@ -32,12 +32,6 @@ export default function SearchBar({
         setFilteredItems(filtered);
     }, [items, query]);
 
-    useEffect(() => {
-        if (selected) {
-        onSelect(selected)
-        }
-    }, [selected, onSelect])
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value)
         if (onChange) {
@@ -45,11 +39,16 @@ export default function SearchBar({
         }
     }
 
+    const handleSelect = (value: string) => {
+        setSelected(value)
+        onSelect(value)
+    }
+
     return (
         <div className={`relative outline outline-1 outline-[#034E33] has-[:focus-visible]:outline-2 rounded-3xl ${weight}`}>
             <Combobox
                 value={selected}
-                onChange={(value: string) => setSelected(value)}
+                onChange={handleSelect}
                 onClose={() => setQuery('')}
             >
                 <div className="flex items-center gap-2 p-2">
@@ -70,7 +69,7 @@ export default function SearchBar({
                 </div>
                 <ComboboxOptions
                     transition
-                    className="absolute group bg-white text-black border rounded-lg w-full z-10"
+                    className="absolute group bg-white text-black rounded-lg w-full z-10 max-h-[300px] overflow-y-auto shadow-xl"
                 >
                     {filteredItems.map((value, index) => (
                     <ComboboxOption
